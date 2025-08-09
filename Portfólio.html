@@ -1,0 +1,323 @@
+<!-- /index.html (rev A) -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>João Gabriel F. V. Correia — Frontend</title>
+  <meta name="description" content="Portfólio de João Gabriel Fernandes Vieira Correia — Estagiário em Desenvolvimento Frontend (HTML, CSS, JavaScript)." />
+  <meta name="theme-color" content="#0b0f17" />
+  <meta property="og:title" content="João Gabriel — Frontend" />
+  <meta property="og:description" content="Portfólio e experiências em Frontend: HTML, CSS e JavaScript." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="EDITAR AQUI: url-da-sua-imagem-de-preview.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --panel: rgba(255,255,255,0.04);
+      --panel-strong: rgba(255,255,255,0.08);
+      --text: #e6edf3;
+      --muted: #9aa4b2;
+      --primary: #6ae3ff;
+      --primary-2: #8cffc7;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 18px;
+      --glass: saturate(140%) blur(8px);
+    }
+    [data-theme="light"] {
+      --bg: #f7f9fc;
+      --panel: rgba(10,10,10,0.02);
+      --panel-strong: rgba(10,10,10,0.06);
+      --text: #0d1117;
+      --muted: #4a5568;
+      --primary: #0066ff;
+      --primary-2: #00b894;
+      --shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1000px 600px at 70% -10%, rgba(106,227,255,0.15), transparent 60%) no-repeat, var(--bg);
+      color:var(--text); line-height:1.6; overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    .container{width:min(1100px, 92%); margin-inline:auto}
+    header{position:sticky; top:0; z-index:50; backdrop-filter:var(--glass); background:linear-gradient(180deg, rgba(0,0,0,0.35), transparent); border-bottom:1px solid var(--panel-strong)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:28px; height:28px; border-radius:10px; background:linear-gradient(135deg, var(--primary), var(--primary-2)); box-shadow:0 0 24px rgba(106,227,255,0.6)}
+    .brand strong{font-weight:800; letter-spacing:0.3px}
+    .menu{display:flex; gap:14px; align-items:center}
+    .menu a{padding:8px 12px; border-radius:12px; border:1px solid transparent}
+    .menu a:hover, .menu a[aria-current="page"]{border-color:var(--panel-strong); background:var(--panel)}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:14px; border:1px solid var(--panel-strong); background:linear-gradient(180deg, var(--panel), transparent); box-shadow:var(--shadow); cursor:pointer}
+    .btn:focus-visible{outline:2px solid var(--primary)}
+    .btn .dot{width:8px; height:8px; border-radius:50%; background:var(--primary)}
+
+    .hero{position:relative; padding:68px 0 36px; display:grid; gap:24px}
+    .hero h1{font-size:clamp(28px, 4vw, 44px); line-height:1.15; margin:0}
+    .hero p{color:var(--muted); margin:8px 0 0}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .badge{padding:6px 10px; border-radius:999px; border:1px solid var(--panel-strong); background:var(--panel); font-size:12px}
+
+    .section{padding:32px 0}
+    .panel{background:radial-gradient(1200px 400px at -10% 0%, rgba(140,255,199,0.06), transparent 60%), var(--panel); border:1px solid var(--panel-strong); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+    .section h2{font-size:clamp(18px, 2.6vw, 26px); margin:0 0 14px}
+    .muted{color:var(--muted)}
+
+    .grid{display:grid; gap:16px}
+    .grid-2{grid-template-columns:repeat(2, minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3, minmax(0,1fr))}
+    @media (max-width:900px){ .grid-2, .grid-3{grid-template-columns:1fr} }
+
+    .timeline{position:relative; padding-left:18px}
+    .timeline::before{content:""; position:absolute; left:6px; top:6px; bottom:6px; width:2px; background:linear-gradient(var(--primary), transparent)}
+    .tl-item{position:relative; padding-left:16px; margin-bottom:16px}
+    .tl-item::before{content:""; position:absolute; left:-1px; top:6px; width:10px; height:10px; border-radius:50%; background:var(--primary); box-shadow:0 0 0 4px color-mix(in srgb, var(--primary) 20%, transparent)}
+
+    .skill{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; border-radius:12px; border:1px solid var(--panel-strong); background:linear-gradient(180deg, var(--panel), transparent)}
+    .meter{height:6px; border-radius:999px; background:var(--panel-strong); overflow:hidden; flex:1}
+    .meter > i{display:block; height:100%; width:var(--val,60%); background:linear-gradient(90deg, var(--primary), var(--primary-2))}
+
+    .contact{display:flex; flex-direction:column; gap:12px}
+    .contact .row{display:flex; gap:8px; flex-wrap:wrap}
+    .copy{font-size:12px; color:var(--muted)}
+
+    footer{padding:24px 0 44px; color:var(--muted)}
+
+    .skip{position:absolute; left:-9999px}
+    .skip:focus{left:12px; top:12px; z-index:1000; background:var(--panel); border:1px solid var(--panel-strong); padding:8px 10px; border-radius:12px}
+
+    @media print{
+      header,.btn,.badge,.skip,#bg-canvas{display:none !important}
+      body{background:#fff; color:#000}
+      .panel{border:1px solid #000}
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip">Pular para o conteúdo</a>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Navegação principal">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <strong>João Correia</strong>
+      </div>
+      <nav class="menu" aria-label="Seções">
+        <a href="#sobre">Sobre</a>
+        <a href="#skills">Skills</a>
+        <a href="#experiencia">Experiência</a>
+        <a href="#formacao">Formação</a>
+        <a href="#contato">Contato</a>
+        <button id="themeToggle" class="btn" aria-pressed="false" title="Alternar tema" aria-label="Alternar tema"><span class="dot"></span>Tema</button>
+      </nav>
+    </div>
+  </header>
+
+  <canvas id="bg-canvas" aria-hidden="true" style="position:fixed; inset:0; z-index:-1"></canvas>
+
+  <main id="main" class="container">
+    <section class="hero" aria-label="Apresentação">
+      <div class="panel">
+        <h1>Estagiário em Desenvolvimento <span style="color:var(--primary)">Frontend</span></h1>
+        <p>HTML, CSS, JavaScript</p>
+        <div class="badges" aria-label="Contatos">
+          <span class="badge">📍 Fortaleza, CE</span>
+          <a class="badge" href="tel:+5585985434701" aria-label="Ligar para (85) 98543-4701">📞 (85) 98543-4701</a>
+          <a class="badge" href="mailto:joaogabrielfvc@gmail.com" aria-label="Enviar e-mail para joaogabrielfvc@gmail.com">✉️ joaogabrielfvc@gmail.com</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre" class="section">
+      <div class="panel">
+        <h2>Sobre</h2>
+        <p class="muted">Oi! Eu sou o João Gabriel, estudante do 9º semestre de Engenharia de Computação (UNIFOR) e apaixonado por construir interfaces limpas, rápidas e fáceis de usar. Meu foco hoje é <strong>HTML, CSS e JavaScript</strong>, sempre cuidando de detalhes de acessibilidade e boas práticas. Curto pegar uma ideia simples e transformar em uma tela funcional — sem complicar. Estou buscando <strong>estágio em Frontend</strong> para aprender na prática, colaborar com o time e evoluir todos os dias. Se quiser bater um papo, me chama por e‑mail ou WhatsApp! 🙂</p>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="panel">
+        <h2>Skills</h2>
+        <div class="grid grid-3" role="list">
+          <div class="skill" role="listitem"><span>HTML</span><div class="meter"><i style="--val:70%"></i></div></div>
+          <div class="skill" role="listitem"><span>CSS</span><div class="meter"><i style="--val:70%"></i></div></div>
+          <div class="skill" role="listitem"><span>JavaScript</span><div class="meter"><i style="--val:65%"></i></div></div>
+          <div class="skill" role="listitem"><span>Acessibilidade</span><div class="meter"><i style="--val:45%"></i></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia" class="section">
+      <div class="panel">
+        <h2>Experiência</h2>
+        <div class="timeline" aria-label="Linha do tempo de experiências">
+          <div class="tl-item">
+            <strong>Domix Serviços Especializados LTDA</strong> — Estagiário no Setor Financeiro (Contas a Pagar)
+            <div class="muted">Abr/2022 – Atual</div>
+            <ul class="muted">
+              <li>Lançamento e controle de contas a pagar, garantindo conformidade com prazos e políticas internas.</li>
+              <li>Suporte na organização de processos financeiros e documentos.</li>
+            </ul>
+          </div>
+          <div class="tl-item">
+            <strong>Controladoria Geral de Disciplina</strong> — Estagiário em Tecnologia da Informação
+            <div class="muted">Set/2024 – Dez/2024</div>
+            <ul class="muted">
+              <li>Suporte técnico à infraestrutura de TI.</li>
+              <li>Instalação de sistemas, configuração de impressoras e redes.</li>
+              <li>Apoio no controle de ativos de TI.</li>
+              <li>Desenvolvimento com multi-paginação utilizando Angular.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="formacao" class="section">
+      <div class="panel grid grid-2">
+        <div>
+          <h2>Formação</h2>
+          <p><strong>Engenharia de Computação</strong> — Universidade de Fortaleza (UNIFOR)</p>
+          <p class="muted">9º semestre (em andamento) • Conclusão prevista: Dez/2025</p>
+        </div>
+        <div>
+          <h2>Cursos & Certificados</h2>
+          <ul class="muted">
+            <li>Desenvolvimento de Sites – HTML e CSS – UECE/IDESCO (mar/2022)</li>
+            <li>Introdução a Acessibilidade Web – UECE/IDESCO (mar/2022)</li>
+            <li>Perito Forense Digital – Academia de Forense Digital (set/2022)</li>
+            <li>Fundamentos em Informática – IBESEC (fev/2023)</li>
+            <li>Jornada Full Stack – HashTag Treinamentos (fev/2025)</li>
+            <li>The Complete Full Stack Web Development Bootcamp – Udemy (em andamento)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="section">
+      <div class="panel contact">
+        <h2>Contato</h2>
+        <div class="row">
+          <a class="btn" href="mailto:joaogabrielfvc@gmail.com">Enviar e-mail</a>
+          <button class="btn" id="copyEmail">Copiar e-mail</button>
+          <a class="btn" href="https://wa.me/5585985434701" target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+        <div class="copy" id="copyStatus" aria-live="polite">Dica: tempo de resposta geralmente no mesmo dia útil.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="muted">© <span id="year"></span> João Gabriel Fernandes Vieira Correia • Disponível para estágio em Frontend</div>
+    </div>
+  </footer>
+
+  <script>
+    (function theme(){
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      const saved = localStorage.getItem('theme');
+      if(saved){ root.setAttribute('data-theme', saved); btn.setAttribute('aria-pressed', saved==='light'); }
+      btn?.addEventListener('click', ()=>{
+        const isLight = root.getAttribute('data-theme')==='light';
+        const next = isLight ? 'dark' : 'light';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        btn.setAttribute('aria-pressed', next==='light');
+      });
+    })();
+
+    (function nav(){
+      const links = document.querySelectorAll('.menu a[href^="#"]');
+      const sections = [...links].map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+      const setActive = (id)=>{
+        links.forEach(a=>a.removeAttribute('aria-current'));
+        const active = document.querySelector(`.menu a[href='${id}']`);
+        active?.setAttribute('aria-current','page');
+      };
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting) setActive(`#${e.target.id}`); });
+      }, {rootMargin:'-50% 0px -40% 0px', threshold:0});
+      sections.forEach(s=>io.observe(s));
+      links.forEach(a=>a.addEventListener('click', (ev)=>{
+        ev.preventDefault(); document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+      }));
+    })();
+
+    (function reveal(){
+      const els = document.querySelectorAll('.panel, .skill, .tl-item');
+      els.forEach(el=>{ el.style.opacity=0; el.style.transform='translateY(8px)'; });
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.style.transition='opacity .4s ease, transform .4s ease';
+            e.target.style.opacity=1; e.target.style.transform='none';
+            io.unobserve(e.target);
+          }
+        })
+      }, {threshold:0.1});
+      els.forEach(el=>io.observe(el));
+    })();
+
+    (function copyEmail(){
+      const btn = document.getElementById('copyEmail');
+      const out = document.getElementById('copyStatus');
+      btn?.addEventListener('click', async ()=>{
+        try{
+          await navigator.clipboard.writeText('joaogabrielfvc@gmail.com');
+          out.textContent = 'E-mail copiado! Agora é só colar onde preferir.';
+        }catch(e){ out.textContent = 'Não foi possível copiar. Tente manualmente: joaogabrielfvc@gmail.com'; }
+      })
+    })();
+
+    (function particles(){
+      const c = document.getElementById('bg-canvas'); if(!c) return; const dpr = Math.min(2, window.devicePixelRatio||1);
+      const ctx = c.getContext('2d'); let w,h,particles=[]; const N=80;
+      function resize(){ w= c.width = innerWidth*dpr; h = c.height = innerHeight*dpr; c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px'; }
+      function rand(a,b){ return Math.random()*(b-a)+a }
+      function init(){ particles = Array.from({length:N},()=>({ x:rand(0,w), y:rand(0,h), vx:rand(-0.15,0.15), vy:rand(-0.1,0.1)})); }
+      function step(){ ctx.clearRect(0,0,w,h); ctx.globalAlpha=0.9;
+        for(let i=0;i<N;i++){
+          const p=particles[i]; p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>w) p.vx*=-1; if(p.y<0||p.y>h) p.vy*=-1;
+        }
+        for(let i=0;i<N;i++){
+          for(let j=i+1;j<N;j++){
+            const a=particles[i], b=particles[j];
+            const dx=a.x-b.x, dy=a.y-b.y; const dist=Math.hypot(dx,dy);
+            if(dist<180*dpr){ ctx.strokeStyle = 'rgba(106,227,255,'+(1-dist/(180*dpr))+')'; ctx.lineWidth=0.8*dpr; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
+          }
+        }
+        ctx.fillStyle = 'rgba(140,255,199,0.9)';
+        particles.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,1.2*dpr,0,Math.PI*2); ctx.fill(); });
+        requestAnimationFrame(step);
+      }
+      addEventListener('resize', ()=>{resize(); init();});
+      resize(); init(); step();
+    })();
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "João Gabriel Fernandes Vieira Correia",
+    "jobTitle": "Estagiário em Desenvolvimento Frontend",
+    "email": "mailto:joaogabrielfvc@gmail.com",
+    "telephone": "+55-85-98543-4701",
+    "url": "EDITAR AQUI: https://seu-dominio.dev",
+    "knowsAbout": ["HTML","CSS","JavaScript","Acessibilidade Web"],
+    "address": {"@type": "PostalAddress", "addressLocality": "Fortaleza", "addressRegion": "CE", "addressCountry": "BR"}
+  }
+  </script>
+</body>
+</html>
